@@ -3,9 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/InputComponent.h"
 #include "GameFramework/Character.h"
+#include "CharacterState.h"
 #include "FSM_Character.generated.h"
+
+class CharacterState;
 
 UCLASS()
 class FSM_API AFSM_Character : public ACharacter
@@ -27,9 +29,16 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
-	virtual void handleInput();
-
-private:
+	virtual void HandleInput(UInputComponent* Input);
+	
 	void HorizontalMove(float value);
 	void VerticalMove(float value);
+
+	void RotatePitch(float value);
+	void RotateYaw(float value);
+
+	void JumpStart();
+	void JumpEnd();
+private:
+	CharacterState* State;
 };

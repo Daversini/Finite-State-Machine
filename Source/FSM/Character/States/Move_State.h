@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -8,11 +8,11 @@
 /**
  * 
  */
-class FSM_API Idle_State : public CharacterState
+class FSM_API Move_State : public CharacterState
 {
 public:
-	Idle_State();
-	~Idle_State();
+	Move_State();
+	~Move_State();
 
 	virtual CharacterState* HandleInput(AFSM_Character& Character, UInputComponent* Input) override;
 	
@@ -20,5 +20,5 @@ public:
 	virtual void Update(AFSM_Character& Character) override;
 	virtual void Exit(AFSM_Character& Character) override;
 
-	virtual FString GetCurrentStateName() override { return "Idle"; }
+	virtual FString GetCurrentStateName() override { return "Move"; }
 };
